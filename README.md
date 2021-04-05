@@ -17,9 +17,9 @@ yarn
 yarn start [input] [output]
 ```
 ### Arguments:
-| Argument | Required | Description                           | Default Value |   |
-|----------|----------|---------------------------------------|---------------|---|
-| input    | false    | The name of the input file.           | input.txt     |   |
-| output   | false    | The name of the generated output file | output.txt    |   |
+| Argument | Required | Description                           | Default Value |
+|----------|----------|---------------------------------------|---------------|
+| input    | false    | The name of the input file.           | input.txt     |
+| output   | false    | The name of the generated output file | output.txt    |
 
 
