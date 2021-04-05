@@ -20,6 +20,7 @@ class MovementController{
     const move = moveFactory(robot)
     for(const movement of movements) {
       const newPosition = move(movement)
+
       if(this._surface.isOutOfBounds(newPosition)){
         // Robot trying to move out of bounds... is there any scent here?
         if(this._surface.hasScent(newPosition)) continue

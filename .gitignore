@@ -1,1 +1,4 @@
 node_modules
+input.txt
+output.txt
+tests/e2e/outputFile.txt

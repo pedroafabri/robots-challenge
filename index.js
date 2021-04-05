@@ -1,11 +1,13 @@
 const Surface = require('./src/surface')
 const RobotFileReader = require('./src/robotFileReader')
 const MovementController = require('./src/movementController')
+const FileWriter = require('./src/fileWriter')
 const path = require('path')
 
 const defaultInputFile = path.join(__dirname, 'input.txt')
+const defaultOutputFile = path.join(__dirname, 'output.txt')
 
-const run = async (inputFile = defaultInputFile) => {
+const run = async (inputFile = defaultInputFile, outputFile = defaultOutputFile) => {
   const robotResults = []
   try{
     const fr = await RobotFileReader.initialize(inputFile)
@@ -22,17 +24,13 @@ const run = async (inputFile = defaultInputFile) => {
       const [x, y, direction] = initial.split(' ')
       const finalPosition = controller.moveRobot(x, y, direction, movements.trim())
       robotResults.push(finalPosition)
-
-      console.log('////////// ROBOT ////////////')
-      console.log(surface.getGrid())
-      console.log(x, y, direction)
-      console.log(movements)
-      console.log(finalPosition)
-      console.log('/////////////////////////////')
     }
+
+    const data = robotResults.join('\n')
+    FileWriter.write(data, outputFile) // write output
   }catch(error){
     console.error(error.message)
   }
 }
 
-run(process.argv[2])
+run(process.argv[2], process.argv[3])

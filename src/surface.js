@@ -16,7 +16,7 @@ class Surface {
   }
 
   isOutOfBounds ({x, y}) {
-    return x > this.x || x < 0 || y > this.y || y < 0
+    return x > this.x - 1 || x < 0 || y > this.y - 1 || y < 0
   }
   
   /**
