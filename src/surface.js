@@ -15,6 +15,10 @@ class Surface {
     }
   }
 
+  isOutOfBounds ({x, y}) {
+    return x > this.x || x < 0 || y > this.y || y < 0
+  }
+  
   /**
    * Returns the array os current scents in the grid.
    */

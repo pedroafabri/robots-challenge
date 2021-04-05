@@ -26,10 +26,20 @@ class Robot{
   }
 
   /**
+   * Sets the new position of the bot
+   * @param {Object} position 
+   */
+  setPosition(newPosition){
+    this._position = newPosition
+    return this._position
+  }
+
+  /**
    * Turn the robot to the next direction clockwise
    */
   turnRight() {
     this._position.direction = this._position.direction === directions.length - 1 ? 0 : this._position.direction + 1
+    return this._position
   }
 
   /**
@@ -37,35 +47,35 @@ class Robot{
    */
   turnLeft() {
     this._position.direction = this._position.direction === 0 ? directions.length - 1 : this._position.direction - 1
+    return this._position
   }
 
   /**
-   * Walks the robot forward
+   * Calculates the next coordinate before walking
    */
-  walk(){
+  calculateWalk() {
+    const pos = {...this._position}
     const direction = directions[this._position.direction]
     switch(direction){
       case 'N':
-        this._walkNorth()
+        pos.y++
         break
       case 'E':
-        this._walkEast()
+        pos.x++
         break
       case 'S':
-        this._walkSouth()
+        pos.y--
         break
       case 'W':
-        this._walkWest()
+        pos.x--
         break
       default:
         throw new Error(`Direction "${direction}" unknown.`)
     }
+
+    return pos
   }
 
-  _walkNorth(){ this._position.y++ }
-  _walkEast(){ this._position.x++ }
-  _walkSouth(){ this._position.y-- }
-  _walkWest(){ this._position.x-- }
 }
 
 module.exports = Robot

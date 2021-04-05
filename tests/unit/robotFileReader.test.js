@@ -26,6 +26,7 @@ describe('Robot FileReader tests', () => {
   it('Should instantiate class', async () => {
     const fr = await RobotFileReader.initialize(testFile)
     expect(fr).toBeInstanceOf(RobotFileReader)
+    fr.closeFile()
   })
 
   it('Should read lines', async () => {

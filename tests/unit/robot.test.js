@@ -45,9 +45,10 @@ describe('Robot class tests', () => {
     expect(robot.getPosition().direction).toBe('N')
   })
 
-  it('Should walk North', () => {
+  it('Should calculate walk North', () => {
     const robot = new Robot(2, 2, Robot.DIRECTION.N)
-    robot.walk()
+    const newPos = robot.calculateWalk()
+    robot.setPosition(newPos)
     const position = robot.getPosition()
     expect(position.x).toBe(2)
     expect(position.y).toBe(3)
@@ -55,7 +56,8 @@ describe('Robot class tests', () => {
 
   it('Should walk East', () => {
     const robot = new Robot(2, 2, Robot.DIRECTION.E)
-    robot.walk()
+    const newPos = robot.calculateWalk()
+    robot.setPosition(newPos)
     const position = robot.getPosition()
     expect(position.x).toBe(3)
     expect(position.y).toBe(2)
@@ -63,7 +65,8 @@ describe('Robot class tests', () => {
 
   it('Should walk South', () => {
     const robot = new Robot(2, 2, Robot.DIRECTION.S)
-    robot.walk()
+    const newPos = robot.calculateWalk()
+    robot.setPosition(newPos)
     const position = robot.getPosition()
     expect(position.x).toBe(2)
     expect(position.y).toBe(1)
@@ -71,7 +74,8 @@ describe('Robot class tests', () => {
 
   it('Should walk West', () => {
     const robot = new Robot(2, 2, Robot.DIRECTION.W)
-    robot.walk()
+    const newPos = robot.calculateWalk()
+    robot.setPosition(newPos)
     const position = robot.getPosition()
     expect(position.x).toBe(1)
     expect(position.y).toBe(2)

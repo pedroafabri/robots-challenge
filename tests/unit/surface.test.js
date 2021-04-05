@@ -53,4 +53,34 @@ describe('Surface class tests', () => {
     surface.addScent(coordinate)
     expect(surface.hasScent(coordinate)).toBe(true)
   })
+
+  it('Should return true when X is greater than bounds', () => {
+    const coordinate = {x: 10, y: 2}
+    const surface = new Surface(5, 3)
+    expect(surface.isOutOfBounds(coordinate)).toBe(true)
+  })
+
+  it('Should return true when X is lower than 0', () => {
+    const coordinate = {x: -1, y: 2}
+    const surface = new Surface(5, 3)
+    expect(surface.isOutOfBounds(coordinate)).toBe(true)
+  })
+
+  it('Should return true when Y is greater than bounds', () => {
+    const coordinate = {x: 2, y: 10}
+    const surface = new Surface(5, 3)
+    expect(surface.isOutOfBounds(coordinate)).toBe(true)
+  })
+
+  it('Should return true when Y is lower than 0', () => {
+    const coordinate = {x: 2, y: -1}
+    const surface = new Surface(5, 3)
+    expect(surface.isOutOfBounds(coordinate)).toBe(true)
+  })
+
+  it('Should return false when X and Y are within bounds', () => {
+    const coordinate = {x: 2, y: 2}
+    const surface = new Surface(5, 3)
+    expect(surface.isOutOfBounds(coordinate)).toBe(false)
+  })
 })
