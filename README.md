@@ -16,6 +16,5 @@ yarn start <input>
 ```
 
 ## TODO:
-- Code file-reader class
-- Code execution class
-- Code CLI commands
+- Improve README.md
+- Debug last failing robot

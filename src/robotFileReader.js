@@ -7,7 +7,7 @@ const readLineFactory = (file) => async () => {
   
   do{
     const result = await file.read(buffer, 0, 1)
-    if(!result.bytesRead) return null
+    if(!result.bytesRead) return str
     if(buffer.toString() !== '\n') str += buffer.toString()
   }while(buffer.toString() !== '\n')
   
@@ -30,14 +30,15 @@ class RobotFileReader{
 
   async readLines(number = 1){
     let lines = []
+    let emptyLines = 0
 
     while(lines.length < number){
       const line = await this._readLine()
-      if(line === null) {
-        this.closeFile()
-        return []
+      if(line === '') {
+        emptyLines++
+        if (emptyLines === 2) break
+        continue
       }
-      if(line === '') continue
       lines.push(line)
     }
 
